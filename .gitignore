@@ -3,3 +3,4 @@
 .idea
 .env
 names.txt
+__pycache__
