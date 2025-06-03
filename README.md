@@ -5,18 +5,18 @@
 
 ### Запуск
 1. Создание окружения
-```powershell
+```bash
 py -3.13 -m venv .venv
 ```
 2. Активация окружения
-```powershell
+```bash
 .venv\Scripts\activate
 ```
 3. Переход в папку с исходным кодом
-```powershell
+```bash
 cd src
 ```
 4. Запуск
-```powershell
+```bash
 python main.py
 ```
