@@ -8,6 +8,15 @@ def print_hello() -> None:
     print(HELLO_TEXT)
 
 
+def print_winner(symbol: str) -> None:
+    if symbol == " ":
+        print("Победила дружба!")
+    elif symbol == "X":
+        print("Вы победили!")
+    else:
+        print("Победил бот!")
+
+
 def print_field(field: list[list[str]]) -> None:
     field_str = NUM_COORDS + SPLIT_LINE
     for row, letter in zip(field, LETTER_COORDS):
