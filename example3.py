@@ -46,3 +46,19 @@ def func(a, *args, s, b=2, **kwargs):
 func(2, "s", 7, 1, g=6, v=8, s=9)
 d = dict(g=2, s=7)
 print("d", d)
+
+
+def test(**kwargs):
+    print(kwargs)
+
+
+d = {"s": 2, "b": 3}
+
+
+def check(name: str, age: int) -> None:
+    print(f"{name} {age}")
+
+
+data = {"age": 22, "name": "Sasha"}
+check(**data)
+test(**d)
