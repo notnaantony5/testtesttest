@@ -65,3 +65,18 @@ names: list[tuple[str, str, str]] = [
     ("Иванов", "Иван", "Иванович"),
     ("Петров", "Петр", "Петрович"),
 ]
+
+
+def write_names(names: list[tuple[str, str, str]], filename: str, csv=False) -> None:
+    with open(filename, "w", encoding="utf-8") as f:
+        if csv:
+            f.write("Фамилия;Имя;Отчество\n")
+            sep = ";"
+        else:
+            sep = " "
+        for name in names:
+            f.write(sep.join(name) + "\n")
+
+
+write_names(names, "names.txt")
+write_names(names, "names.csv", csv=True)
