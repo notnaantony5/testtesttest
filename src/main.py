@@ -9,7 +9,7 @@ def check_end_game(field) -> None:
     if winner:
         print_field(field)
         print_winner(winner)
-        exit(0)
+        exЩВit(0)
 
 
 def main():
