@@ -37,7 +37,9 @@ admin1.write("Всем привет!")
 user1.write("********")
 admin1.mute(user1)
 user1.write("Я пошутил!")
-
+# class Animal:
+# class Wolf(Animal):
+# class Dog(Wolf):
 
 # Класс животное - имеет цвет
 # Класс волк имеет цвет, имеет возможность говорить say() -> "воет"
