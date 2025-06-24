@@ -2,6 +2,8 @@ from datetime import datetime
 
 
 class User:
+    """fasdgas"""
+
     def __init__(self, name: str):
         self.name = name
 
