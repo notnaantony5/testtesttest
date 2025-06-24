@@ -53,6 +53,7 @@ def main():
     while game.index_of_questions <= game.last_index:
         game.print_question()
         game.user_answer()
+    print((datetime.now() - game.start_time).total_seconds())
 
 
 main()
