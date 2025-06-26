@@ -20,6 +20,11 @@ class UserService:
                 result.append(UserData(**user_data))
         return result
 
+    def get_by_username(self, username: str):
+        pass
+
 
 service = UserService()
+print(service.get_by_username("test"))
+# UserData(username='test', fullname='TEST TEST', rating=15)
 print(service.get_users_data())
