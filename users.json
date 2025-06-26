@@ -1,7 +1,32 @@
 [
-    {
-        "username": "test",
-        "fullname": "TEST TEST",
-        "rating": 15
-    }
+  {
+    "username": "test",
+    "fullname": "TEST TEST",
+    "rating": 15
+  },
+  {
+    "username": "sasha",
+    "fullname": "Aleksand",
+    "rating": 12
+  },
+  {
+    "username": "sasha2",
+    "fullname": "Aleksand2",
+    "rating": 13
+  },
+  {
+    "username": "sasha2",
+    "fullname": "впвыа",
+    "rating": 13
+  },
+  {
+    "username": "sasha2",
+    "fullname": "впвыа",
+    "rating": 13
+  },
+  {
+    "username": "sasha2",
+    "fullname": "впвыа",
+    "rating": 13
+  }
 ]
