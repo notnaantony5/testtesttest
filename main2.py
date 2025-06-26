@@ -13,7 +13,7 @@ class UserService:
     def __init__(self, path="users.json"):
         self.path = path
 
-    def get_users_data(self):
+    def get_users_data(self) -> list[UserData]:
         result = []
         with open(self.path, "r", encoding="utf-8") as f:
             for user_data in json.load(f):
@@ -21,7 +21,7 @@ class UserService:
         return result
 
     def get_by_username(self, username: str):
-        pass
+        user_datas = self.get_users_data()
 
 
 service = UserService()
