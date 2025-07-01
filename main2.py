@@ -1,9 +1,10 @@
 from math import sqrt
+from typing import Generator
 
 
-def read_file(path="coord.txt") -> list[str]:
+def read_file(path="coord.txt") -> Generator[str]:
     with open(path, "r", encoding="utf-8") as f:
-        return f.readlines()
+        yield f.readline()
 
 
 def get_tuple_from_str(line: str) -> tuple[int, int]:
@@ -18,10 +19,10 @@ def get_lenght(line: str) -> tuple[float, tuple[int, int]]:
 
 
 def main():
-    lines = read_file()
+    lines_generator = read_file()
     max_lenght = 0.0
     max_coords = (0, 0)
-    for lenght, coords in (get_lenght(line) for line in lines):
+    for lenght, coords in (get_lenght(line) for line in lines_generator):
         if lenght > max_lenght:
             max_lenght = lenght
             max_coords = coords
