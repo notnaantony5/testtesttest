@@ -1,51 +1,28 @@
-from dataclasses import dataclass
+from datetime import datetime
+
+numbers = list(range(50_000_000))
 
 
-class Service:
-    endpoint = "test"
-
-    @classmethod
-    def call(cls):
-        print(cls.endpoint)
-
-
-# Service.call()
+def func(numbers: list[int]) -> dict[int, int]:
+    step_numbers = {}
+    for number in numbers:
+        if number % 2:
+            step_numbers[number] = number**2
+    return step_numbers
 
 
-@dataclass
-class UserData:
-    login: str
-    age: int
+def func2(numbers: list[int]):
+    return (number for number in numbers if number % 2)
 
 
-class User:
-    def __init__(self, username: str, age: int):
-        self.username = username
-        self.age = age
-
-    @classmethod
-    def from_userdata(cls, user_data: UserData):
-        return cls(user_data.login, user_data.age)
-
-
-user_data = UserData("test", 22)
-user = User.from_userdata(user_data)
-print(user.age)
-
-
-class UserService:
-    atrib = 22
-
-    @staticmethod
-    def func():
-        return
-
-
-class PostService:
-    @staticmethod
-    def func(text: str):
-        return text
-
-
-PostService.func("text")
-UserService.func()
+input(":")
+start_time = datetime.now()
+for num in func(numbers):
+    num
+print(datetime.now() - start_time)
+input(":")
+start_time = datetime.now()
+for num in func2(numbers):
+    num
+print(datetime.now() - start_time)
+input(":")
