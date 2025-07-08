@@ -19,5 +19,5 @@ INSERT INTO student (username, fullname)
 VALUES (?, ?)
 """
 # cu.execute(CREATE_TABLE_COMMAND)
-cu.execute(CREATE_COMMAND, ("sasha2", "Александр"))
+cu.executemany(CREATE_COMMAND, [("sasha3", "Александр"), ("sasha4", "Александр")])
 con.commit()
