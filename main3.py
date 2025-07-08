@@ -19,5 +19,17 @@ INSERT INTO student (username, fullname)
 VALUES (?, ?)
 """
 # cu.execute(CREATE_TABLE_COMMAND)
-cu.executemany(CREATE_COMMAND, [("sasha3", "Александр"), ("sasha4", "Александр")])
-con.commit()
+# cu.executemany(CREATE_COMMAND, [("sasha3", "Александр"), ("sasha4", "Александр")])
+# con.commit()
+READ_COMMAND = """
+SELECT id, username, fullname
+FROM student
+"""
+cu.execute(READ_COMMAND)
+print(cu.fetchall())
+cu.execute(READ_COMMAND)
+while True:
+    data = cu.fetchone()
+    if not data:
+        break
+    print(data)
