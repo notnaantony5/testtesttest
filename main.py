@@ -1,51 +1,29 @@
-from dataclasses import dataclass
+from typing import Callable
+from datetime import datetime
 
 
-class Service:
-    endpoint = "test"
+def get_time(*, echo: bool) -> Callable:
+    def outer_wrapper(func: Callable) -> Callable:
+        def wrapper(*args, **kwargs):
+            start_time = datetime.now()
+            func(*args, **kwargs)
+            end_time = datetime.now()
+            result = (end_time - start_time).total_seconds()
+            if echo:
+                print(result)
 
-    @classmethod
-    def call(cls):
-        print(cls.endpoint)
+        return wrapper
 
-
-# Service.call()
-
-
-@dataclass
-class UserData:
-    login: str
-    age: int
+    return outer_wrapper
 
 
-class User:
-    def __init__(self, username: str, age: int):
-        self.username = username
-        self.age = age
-
-    @classmethod
-    def from_userdata(cls, user_data: UserData):
-        return cls(user_data.login, user_data.age)
+@get_time(echo=True)
+def test(end: int) -> None:
+    print(end)
+    for _ in list(range(end)):
+        pass
 
 
-user_data = UserData("test", 22)
-user = User.from_userdata(user_data)
-print(user.age)
-
-
-class UserService:
-    atrib = 22
-
-    @staticmethod
-    def func():
-        return
-
-
-class PostService:
-    @staticmethod
-    def func(text: str):
-        return text
-
-
-PostService.func("text")
-UserService.func()
+print("start")
+test(end=40_000_000)
+print("end")
