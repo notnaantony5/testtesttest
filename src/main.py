@@ -4,7 +4,7 @@ from print_item import print_list_items
 from settings import DB_PATH
 
 MENU = """1. Показать все товары
-2. Найти товары по ключевому поиску
+2. Найти товары по ключевому слову
 0. Выход"""
 MENU_CHOICES = {0, 1, 2}
 
@@ -34,11 +34,10 @@ def main():
         if user_input == 1:
             items = items_dao.get_all_items()
             print_list_items(items)
-        # Здесь добавить обработку еще одного пункта меню
-        # Пользователь после выбора этого пункта вводит здесь слово
-        # Которое передается в параметрах нового метода items_dao
-        # Этот метод вернет товары подходящие под условия поиска
-        # Их нужно напечатать аналогичным прошлому пункту способом
+        if user_input == 2:
+            title = input("Введите название: ")
+            items = items_dao.get_items_by_title(title)
+            print_list_items(items)
     print("Завершение работы программы...")
 
 

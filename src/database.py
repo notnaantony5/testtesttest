@@ -1,4 +1,3 @@
-from commands import CREATE_TABLES_COMMANDS
 from sqlite3 import Connection, Cursor, connect
 from typing import Generator
 
