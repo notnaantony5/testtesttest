@@ -1,7 +1,9 @@
-from database import Database
+from dao import TablesDAO
+from dao import ItemsDAO
+from print_item import print_all_items
 from settings import DB_PATH
 
-MENU = """1. ---
+MENU = """1. Показать все товары
 0. Выход"""
 MENU_CHOICES = {0, 1}
 
@@ -20,13 +22,17 @@ def get_user_choice() -> int:
 
 def main():
     print("Привет! Это программа для помощи учета товара на складе")
-    database = Database(DB_PATH)
-    database.create_tables()
+    tables_dao = TablesDAO(DB_PATH)
+    items_dao = ItemsDAO(DB_PATH)
+    tables_dao.create_tables()
     while True:
         print(MENU)
         user_input = get_user_choice()
         if user_input == 0:
             break
+        if user_input == 1:
+            items = items_dao.get_all_items()
+            print_all_items(items)
     print("Завершение работы программы...")
 
 
