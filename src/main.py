@@ -1,6 +1,6 @@
 from dao import TablesDAO
 from dao import ItemsDAO
-from print_item import print_all_items
+from print_item import print_list_items
 from settings import DB_PATH
 
 MENU = """1. Показать все товары
@@ -32,7 +32,7 @@ def main():
             break
         if user_input == 1:
             items = items_dao.get_all_items()
-            print_all_items(items)
+            print_list_items(items)
     print("Завершение работы программы...")
 
 
