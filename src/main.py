@@ -6,8 +6,7 @@ MENU_CHOICES = {0, 1}
 def get_user_choice() -> int:
     while True:
         try:
-            user_input = int(input().strip())
-            if user_input not in MENU_CHOICES:
+            if int(input().strip()) not in MENU_CHOICES:
                 raise ValueError
         except ValueError:
             print("Это не пункт меню! Попробуйте еще раз.")
