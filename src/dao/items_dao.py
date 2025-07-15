@@ -1,6 +1,6 @@
-from data_types import Item
+from data_types import BaseItem, Item
 from database import BaseDatabase
-from commands import SELECT_ALL_ITEMS, SELECT_ITEMS_BY_TITLE
+from commands import SELECT_ALL_ITEMS, SELECT_ITEMS_BY_TITLE, INSERT_ITEM
 
 
 class ItemsDAO(BaseDatabase):
@@ -17,3 +17,11 @@ class ItemsDAO(BaseDatabase):
         cursor.execute(SELECT_ITEMS_BY_TITLE, (f"%{title}%",))
         result = cursor.fetchall()
         return [Item(*args) for args in result]
+
+    def create_item(self, item: BaseItem) -> Item:
+        session_maker = self.session_maker()
+        session, cursor = next(session_maker)
+        cursor.execute(INSERT_ITEM, (item.title, item.weight))
+        session.commit()
+        cursor.execute(SELECT_ITEMS_BY_TITLE, (item.title,))
+        return Item(*cursor.fetchone())

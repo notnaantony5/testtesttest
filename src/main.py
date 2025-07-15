@@ -1,7 +1,8 @@
-from encodings.punycode import T
+from sqlite3 import IntegrityError
 from dao import TablesDAO
 from dao import ItemsDAO
-from print_item import print_list_items
+from data_types import BaseItem
+from print_item import print_list_items, print_item
 from settings import DB_PATH
 
 MENU = """1. Работа с товарами
@@ -10,8 +11,15 @@ MENU_CHOICES = {0, 1}
 
 ITEM_MENU = """1. Посмотреть все товары
 2. Поиск товаров по имени
+3. Создать товар
 0. Выход"""
-ITEM_CHOICES = {0, 1, 2}
+ITEM_CHOICES = {0, 1, 2, 3}
+
+
+def get_item_data_from_user() -> BaseItem:
+    title = input("Имя товара: ")
+    weight = int(input("Вес товара: "))
+    return BaseItem(title, weight)
 
 
 def get_user_choice(choices: set[int]) -> int:
@@ -40,6 +48,14 @@ def item_menu(items_dao: ItemsDAO):
                 title = input("Введите имя: ")
                 items = items_dao.get_items_by_title(title)
                 print_list_items(items)
+            case 3:
+                item = get_item_data_from_user()
+                try:
+                    result = items_dao.create_item(item)
+                except IntegrityError:
+                    print("Название товара уже занято!")
+                else:
+                    print_item(result)
 
 
 def main():
