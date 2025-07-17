@@ -8,5 +8,12 @@ class BaseItem:
 
 
 @dataclass
+class NullableBaseItem:
+    id: int
+    title: str | None
+    weight: int | None
+
+
+@dataclass
 class Item(BaseItem):
     id: int
