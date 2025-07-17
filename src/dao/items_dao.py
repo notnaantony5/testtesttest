@@ -1,9 +1,9 @@
-from commands.select_items import SELECT_ITEMS_BY_ID
 from data_types import BaseItem, Item, NullableBaseItem
 from database import BaseDatabase
 from commands import (
     SELECT_ALL_ITEMS,
     SELECT_ITEMS_BY_TITLE,
+    SELECT_ITEMS_BY_ID,
     INSERT_ITEM,
     UPDATE_ITEM_BY_ID,
 )
